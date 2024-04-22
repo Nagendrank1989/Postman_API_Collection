@@ -1,0 +1,383 @@
+{
+	"info": {
+		"_postman_id": "e1857833-6d21-4653-a369-a5c8d08535d5",
+		"name": "Mycollection 1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34246683"
+	},
+	"item": [
+		{
+			"name": "Get request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is below 100 ms\",() =>{\r",
+							"   \r",
+							"    pm.expect(pm.response.responseTime).to.be.below(150);\r",
+							"\r",
+							"}); \r",
+							"\r",
+							"pm.test(\"status code is 200\",() => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content type Header is present\",() => {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"    //pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json; charset=utf-8');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content type Header is present\",() => {\r",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json; charset=utf-8');\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"language cookie is present\",() => {\r",
+							"   pm.expect(pm.cookies.has('language')).to.be.false;\r",
+							"});\r",
+							"\r",
+							"const jsonData = pm.response.json();\r",
+							"pm.test(\"Validating data type of Json\",() =>{\r",
+							"    pm.expect(jsonData).to.be.an(\"Object\");\r",
+							"    pm.expect(jsonData.total_pages).to.be.a(\"number\");\r",
+							"});\r",
+							"\r",
+							"var schema = {\r",
+							"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"page\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"per_page\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"total\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"total_pages\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"data\": {\r",
+							"      \"type\": \"array\",\r",
+							"      \"items\": [\r",
+							"        {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"id\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"email\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"first_name\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"last_name\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"avatar\": {\r",
+							"              \"type\": \"string\"\r",
+							"            }\r",
+							"          },\r",
+							"          \"required\": [\r",
+							"            \"id\",\r",
+							"            \"email\",\r",
+							"            \"first_name\",\r",
+							"            \"last_name\",\r",
+							"            \"avatar\"\r",
+							"          ]\r",
+							"        },\r",
+							"        {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"id\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"email\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"first_name\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"last_name\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"avatar\": {\r",
+							"              \"type\": \"string\"\r",
+							"            }\r",
+							"          },\r",
+							"          \"required\": [\r",
+							"            \"id\",\r",
+							"            \"email\",\r",
+							"            \"first_name\",\r",
+							"            \"last_name\",\r",
+							"            \"avatar\"\r",
+							"          ]\r",
+							"        },\r",
+							"        {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"id\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"email\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"first_name\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"last_name\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"avatar\": {\r",
+							"              \"type\": \"string\"\r",
+							"            }\r",
+							"          },\r",
+							"          \"required\": [\r",
+							"            \"id\",\r",
+							"            \"email\",\r",
+							"            \"first_name\",\r",
+							"            \"last_name\",\r",
+							"            \"avatar\"\r",
+							"          ]\r",
+							"        },\r",
+							"        {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"id\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"email\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"first_name\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"last_name\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"avatar\": {\r",
+							"              \"type\": \"string\"\r",
+							"            }\r",
+							"          },\r",
+							"          \"required\": [\r",
+							"            \"id\",\r",
+							"            \"email\",\r",
+							"            \"first_name\",\r",
+							"            \"last_name\",\r",
+							"            \"avatar\"\r",
+							"          ]\r",
+							"        },\r",
+							"        {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"id\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"email\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"first_name\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"last_name\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"avatar\": {\r",
+							"              \"type\": \"string\"\r",
+							"            }\r",
+							"          },\r",
+							"          \"required\": [\r",
+							"            \"id\",\r",
+							"            \"email\",\r",
+							"            \"first_name\",\r",
+							"            \"last_name\",\r",
+							"            \"avatar\"\r",
+							"          ]\r",
+							"        },\r",
+							"        {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"id\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"email\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"first_name\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"last_name\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"avatar\": {\r",
+							"              \"type\": \"string\"\r",
+							"            }\r",
+							"          },\r",
+							"          \"required\": [\r",
+							"            \"id\",\r",
+							"            \"email\",\r",
+							"            \"first_name\",\r",
+							"            \"last_name\",\r",
+							"            \"avatar\"\r",
+							"          ]\r",
+							"        }\r",
+							"      ]\r",
+							"    },\r",
+							"    \"support\": {\r",
+							"      \"type\": \"object\",\r",
+							"      \"properties\": {\r",
+							"        \"url\": {\r",
+							"          \"type\": \"string\"\r",
+							"        },\r",
+							"        \"text\": {\r",
+							"          \"type\": \"string\"\r",
+							"        }\r",
+							"      },\r",
+							"      \"required\": [\r",
+							"        \"url\",\r",
+							"        \"text\"\r",
+							"      ]\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\r",
+							"    \"page\",\r",
+							"    \"per_page\",\r",
+							"    \"total\",\r",
+							"    \"total_pages\",\r",
+							"    \"data\",\r",
+							"    \"support\"\r",
+							"  ]\r",
+							"}\r",
+							"\r",
+							"pm.test(\"Validate sceme\",() => {\r",
+							"    pm.expect(tv4.validate(jsonData,schema)).to.be.true;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users?page=2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"pavan\"\r\n    \"job\": \"trainer\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put Request",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"pavan\",\r\n    \"job\": \"tester\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users/664",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"664"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Request",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users/664",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"664"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
